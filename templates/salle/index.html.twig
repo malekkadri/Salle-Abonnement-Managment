@@ -1,0 +1,43 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Salle index{% endblock %}
+
+{% block body %}
+    <h1>Salle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_salle</th>
+                <th>Description_salle</th>
+                <th>Region_salle</th>
+                <th>Image</th>
+                <th>Adresse_salle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+            <tr>
+                <td>{{ salle.id }}</td>
+                <td>{{ salle.nomSalle }}</td>
+                <td>{{ salle.descriptionSalle }}</td>
+                <td>{{ salle.regionSalle }}</td>
+                <td>{{ salle.image }}</td>
+                <td>{{ salle.adresseSalle }}</td>
+                <td>
+                    <a href="{{ path('app_salle_show', {'id': salle.id}) }}">show</a>
+                    <a href="{{ path('app_salle_edit', {'id': salle.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_salle_new') }}">Create new</a>
+{% endblock %}
